@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MOTOR1" Id="{ef30cc67-8694-4ef0-b9fe-fd04ae26ab04}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MOTOR1
+VAR
+	iStep : INT ;
+	fbRising: R_TRIG;
+	fbFalling: F_TRIG;
+	bM1DirectionSwitch: BOOL;
+	bM1RunOtherDirection: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[io.M1FaultLight := io.M1FaultStatus;
+io.M1RunLight := io.M1RunStatus;
+
+fbRising(CLK:= io.M1StartBtn, Q=> );
+fbFalling(CLK:= (io.M1StopBtn), Q=> );
+
+IF fbRising.Q AND io.M1StopBtn THEN 
+	//IF bM1DirectionSwitch THEN
+		io.M1RunCommand := TRUE;
+		//bM1RunOtherDirection := FALSE;
+	//ELSE
+		//io.M1RunCommand := FALSE;
+		//bM1RunOtherDirection := TRUE;
+	//END_IF
+END_IF
+
+IF fbFalling.Q THEN 
+	io.M1RunCommand := FALSE;
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MOTOR1">
+      <LineId Id="114" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="140" Count="1" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="122" Count="1" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="124" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

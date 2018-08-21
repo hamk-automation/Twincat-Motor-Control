@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <GVL Name="IO" Id="{ec2d2da6-c54f-442b-89ea-7eb88ac03088}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	// DIGITAL INPUT 
+	M1StopBtn AT %I* :  BOOL;
+	M1StartBtn AT %I* :  BOOL;
+	M1RunStatus AT %I* :  BOOL;
+	M1FaultStatus AT %I* :  BOOL;
+	M2RunStatus AT %I* :  BOOL;
+	M2FaultStatus AT %I* :  BOOL;
+	M2StartSwitch AT %I* :  BOOL;
+	M2DirectionSwitch AT %I* :  BOOL;
+	M2ConstantSwitch AT %I* : 	BOOL;
+	
+	
+
+	// DIGITAL OUTPUT
+	M1RunCommand AT %Q* : BOOL;
+	M1RunLight AT %Q* : BOOL;
+	M1FaultLight AT %Q* : BOOL;
+	M2RunLight AT %Q* : BOOL;
+	M2FaultLight AT %Q* : BOOL;
+	M2RunControl AT %Q* : BOOL;
+	M2DirectionControl AT %Q* : BOOL;
+	M2ConstantControl AT %Q* : BOOL;
+	
+	// ANALOG INPUT 
+	AI1_1 AT %I* : INT;
+	
+	// ANALOG OUTPUT 
+	AQ1_1 AT %Q* : INT; 
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

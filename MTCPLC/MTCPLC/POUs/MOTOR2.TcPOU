@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MOTOR2" Id="{32e7a051-6f20-4206-93f6-4507f21fe383}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MOTOR2
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[io.M2RunControl := io.M2StartSwitch;
+io.M2DirectionControl := io.M2DirectionSwitch;
+io.M2ConstantControl := io.M2ConstantSwitch;
+
+io.M2RunLight := io.M2RunStatus;
+io.M2FaultLight := io.M2FaultStatus;
+
+
+io.AI1_1 := io.AQ1_1;]]></ST>
+    </Implementation>
+    <LineIds Name="MOTOR2">
+      <LineId Id="5" Count="0" />
+      <LineId Id="110" Count="1" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="115" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
